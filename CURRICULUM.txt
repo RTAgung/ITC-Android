@@ -1,0 +1,20 @@
+---------------------- CURRICULUM ----------------------
+
+_____SEMESTER GENAP
+1. Java (Migrating)
+2. Layout (View)
+3. Java (OOP)
+4. Layout (View Group)
+5. Intent (Explicit)
+6. Intent (Implicit)
+7. Fragment
+8. Recycle View
+
+_____SEMESTER GANJIL
+1. Recycle View
+2. Room Database
+3. Room Database
+4. API
+5. API
+6. Web Service
+7. Web Service
