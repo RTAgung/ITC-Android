@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/vg_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/vg_bottom"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="20dp"
+                android:text="ITC Cafe"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:background="#B3E5FC"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_makan"
+                    android:layout_width="180dp"
+                    android:layout_height="200dp"
+                    android:layout_marginRight="14dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/makanan" />
+
+                <TextView
+                    android:id="@+id/tv_judulmakan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/iv_makan"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:text="Sate"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_deskripsimakan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_judulmakan"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/iv_makan"
+                    android:maxLines="4"
+                    android:minLines="4"
+                    android:text="Deskripsi nya panjang sekaleee sampe gamuat lagi kolomnya wkwkwkwkwkwkwk gila emang"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_hargamakan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_deskripsimakan"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/iv_makan"
+                    android:text="Rp.10000"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_tambahmakan"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="+" />
+
+                <TextView
+                    android:id="@+id/tv_jumlahmakan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_toLeftOf="@id/btn_tambahmakan"
+                    android:paddingBottom="8dp"
+                    android:text="0"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_kurangmakan"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@id/tv_jumlahmakan"
+                    android:text="-" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:background="#B3E5FC"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_minum"
+                    android:layout_width="180dp"
+                    android:layout_height="200dp"
+                    android:layout_marginRight="14dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/minuman" />
+
+                <TextView
+                    android:id="@+id/tv_judulminum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/iv_minum"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:text="Kopi"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_deskripsiminum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_judulminum"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/iv_minum"
+                    android:maxLines="4"
+                    android:minLines="4"
+                    android:text="Deskripsi nya panjang sekaleee sampe gamuat lagi kolomnya wkwkwkwkwkwkwk gila emang"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_hargaminum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_deskripsiminum"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/iv_minum"
+                    android:text="Rp.4000"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_tambahminum"
+                    android:layout_width="45dp"
+                    android:layout_height="38dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="+" />
+
+                <TextView
+                    android:id="@+id/tv_jumlahminum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_toLeftOf="@id/btn_tambahminum"
+                    android:paddingBottom="8dp"
+                    android:text="0"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_kurangminum"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@id/tv_jumlahminum"
+                    android:text="-" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/vg_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#B3E5FC"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Rp.0"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_purchased"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:text="Purchased"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_buy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:text="Buy" />
+
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1"
+                android:text="Reset" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
