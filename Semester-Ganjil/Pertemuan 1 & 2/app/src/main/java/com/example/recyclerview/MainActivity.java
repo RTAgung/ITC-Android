@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         listGame = DataDummy.getAllDataDummy();
 
         recyclerView.setHasFixedSize(true);
-        setGridList();
+        setLinearList();
     }
 
     void setLinearList(){

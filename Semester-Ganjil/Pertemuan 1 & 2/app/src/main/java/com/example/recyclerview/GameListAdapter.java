@@ -1,9 +1,12 @@
 package com.example.recyclerview;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -40,6 +43,7 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         CircleImageView ivGame;
         TextView tvTitle, tvTags;
+        Context context = itemView.getContext();
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -48,7 +52,7 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHo
             tvTags = itemView.findViewById(R.id.tv_tags);
         }
 
-        void bind(Game data){
+        void bind(final Game data) {
             Picasso.get()
                     .load(data.getImage())
                     .placeholder(R.drawable.ic_baseline_image_24)
@@ -56,6 +60,16 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHo
                     .into(ivGame);
             tvTitle.setText(data.getTitle());
             tvTags.setText(data.getTags());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "Saya memilih " + tvTitle.getText().toString(), Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra(DetailActivity.EXTRA_GAME, data);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
