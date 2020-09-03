@@ -1,10 +1,13 @@
 package com.example.mynotesapp.adapter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.mynotesapp.NoteActivity;
 import com.example.mynotesapp.R;
 import com.example.mynotesapp.model.Note;
 
@@ -15,13 +18,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     private ArrayList<Note> listNotes = new ArrayList<>();
+    private Activity activity;
 
     public void setListNotes(ArrayList<Note> listNotes) {
-        if (listNotes.size() > 0){
-            this.listNotes.clear();
-        }
+        this.listNotes.clear();
         this.listNotes.addAll(listNotes);
         notifyDataSetChanged();
+    }
+
+    public NoteAdapter(Activity activity) {
+        this.activity = activity;
     }
 
     @NonNull
@@ -51,10 +57,19 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             tvDate = itemView.findViewById(R.id.tv_date);
         }
 
-        void bind(Note data){
-            tvTitle.setText(data.getText());
+        void bind(final Note data){
+            tvTitle.setText(data.getTitle());
             tvText.setText(data.getText());
             tvDate.setText(data.getDate());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(activity, NoteActivity.class);
+                    intent.putExtra(NoteActivity.EXTRA_NOTE, data);
+                    activity.startActivityForResult(intent, NoteActivity.REQUEST_EDIT);
+                }
+            });
         }
     }
 }

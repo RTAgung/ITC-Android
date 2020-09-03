@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         noteDao = NoteDatabase.getInstance(this).noteDao();
 
-        noteAdapter = new NoteAdapter();
+        noteAdapter = new NoteAdapter(this);
         rvNotes = findViewById(R.id.rv_notes);
         rvNotes.setHasFixedSize(true);
         rvNotes.setLayoutManager(new LinearLayoutManager(this));
@@ -58,19 +58,30 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == NoteAddActivity.REQUEST_ADD) {
             if (resultCode == NoteAddActivity.RESULT_ADD) {
                 loadData();
+                showSnackbar("Data Berhasil Ditambahkan");
+            }
+        } else if (requestCode == NoteActivity.REQUEST_EDIT) {
+            if (resultCode == NoteActivity.RESULT_EDIT) {
+                loadData();
+                showSnackbar("Data Berhasil Diedit");
+            } else if (resultCode == NoteActivity.RESULT_DELETE) {
+                loadData();
+                showSnackbar("Data Berhasil Dihapus");
             }
         }
     }
 
     void loadData() {
         List<Note> data = noteDao.getAllData();
-        if (data.size() > 0) {
-            if (listNotes.size() > 0)
-                listNotes.clear();
-            listNotes.addAll(data);
-            noteAdapter.setListNotes(listNotes);
-        } else {
-            Snackbar.make(rvNotes, "Tidak Ada Data", Snackbar.LENGTH_LONG).show();
+        listNotes.clear();
+        listNotes.addAll(data);
+        noteAdapter.setListNotes(listNotes);
+        if (data.size() == 0) {
+            showSnackbar("Tidak Ada Data");
         }
+    }
+
+    private void showSnackbar(String message) {
+        Snackbar.make(rvNotes, message, Snackbar.LENGTH_LONG).show();
     }
 }

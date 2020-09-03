@@ -1,9 +1,14 @@
 package com.example.mynotesapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +35,11 @@ public class NoteAddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_add);
 
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Tambah");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         noteDao = NoteDatabase.getInstance(this).noteDao();
 
         etTitle = findViewById(R.id.et_title);
@@ -51,9 +61,55 @@ public class NoteAddActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            showDialogMessage();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        showDialogMessage();
+    }
+
     private String getCurrentDate(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    private void showDialogMessage() {
+        String message;
+        String title;
+
+        title = "Batal";
+        message = "Apakah anda ingin membatalkan penambahan note?";
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(title)
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .create()
+                .show();
     }
 }

@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "notes")
@@ -16,8 +17,16 @@ public class Note implements Parcelable {
     private String title;
     @ColumnInfo(name = "Text")
     private String text;
-    @ColumnInfo(name = "updateDate")
+    @ColumnInfo(name = "UpdateDate")
     private String date;
+
+    @Ignore
+    public Note(int id, String title, String text, String date) {
+        this.id = id;
+        this.title = title;
+        this.text = text;
+        this.date = date;
+    }
 
     public Note(String title, String text, String date) {
         this.title = title;
