@@ -1,11 +1,13 @@
 package com.example.githubapi.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.githubapi.DetailActivity;
 import com.example.githubapi.R;
 import com.example.githubapi.model.User;
 import com.squareup.picasso.Picasso;
@@ -56,6 +58,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             Picasso.get()
                     .load(user.getAvatar_url())
                     .into(ivAvatar);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
+                    intent.putExtra(DetailActivity.EXTRA_PARCEL, user);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

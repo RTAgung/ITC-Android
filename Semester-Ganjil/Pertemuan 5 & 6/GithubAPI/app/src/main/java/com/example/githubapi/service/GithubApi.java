@@ -27,7 +27,7 @@ public class GithubApi {
         return retrofit.create(GithubInterface.class);
     }
 
-    public void getAllUser(final ApiListener listener){
+    public void getAllUser(final ApiListener<ArrayList<User>> listener){
         int random = new Random().nextInt(10000);
         getAPI().getUsers(random).enqueue(new Callback<ArrayList<User>>() {
             @Override
@@ -40,6 +40,23 @@ public class GithubApi {
 
             @Override
             public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+                listener.onFailed(t.getMessage());
+            }
+        });
+    }
+
+    public void getDetailUser(final ApiListener<User> listener, String username){
+        getAPI().getDetailUser(username).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                if (user != null){
+                    listener.onSuccess(user);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
                 listener.onFailed(t.getMessage());
             }
         });

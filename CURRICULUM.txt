@@ -8,13 +8,12 @@ _____SEMESTER GENAP
 5. Intent (Explicit)
 6. Intent (Implicit)
 7. Fragment
-8. Recycle View
+8. Fragment
 
 _____SEMESTER GANJIL
-1. Recycle View
-2. Room Database
+1. Recycler View
+2. Recycler View
 3. Room Database
-4. API
+4. Room Database
 5. API
-6. Web Service
-7. Web Service
+6. API

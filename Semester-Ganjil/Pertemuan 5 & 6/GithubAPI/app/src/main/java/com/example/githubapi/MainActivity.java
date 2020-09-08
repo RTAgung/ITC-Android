@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         githubApi.getAllUser(userListener);
     }
 
-    ApiListener userListener = new ApiListener() {
+    ApiListener<ArrayList<User>> userListener = new ApiListener<ArrayList<User>>() {
         @Override
         public void onSuccess(ArrayList<User> users) {
             listUser.addAll(users);
